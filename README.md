@@ -6,7 +6,7 @@ Space Invaders Game (1st Year College) Documentation (Portuguese)
 
 
 # Autores
-Este trabalho representa o projeto final da cadeira CPC (Complementos de Programação para Computadores), lecionada pelo professor Ricardo Cabral, no primeiro ano, segundo semestre da licenciatura "Engenharia Eletrónica Industrial e de Computadores". Os responsáveis por este trabalho são:
+Este trabalho representa o projeto final da cadeira CPC (Complementos de Programação para Computadores), lecionada pelo professor Ricardo Carrola, no primeiro ano, segundo semestre da licenciatura "Engenharia Eletrónica Industrial e de Computadores". Os responsáveis por este trabalho são:
 
 Afonso Gomes, n.º aluno: A101168
 
