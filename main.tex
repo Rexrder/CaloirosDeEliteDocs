@@ -1,0 +1,269 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype} %improves justification
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\usepackage{fancyhdr} % header
+\usepackage{amsmath} % math formulas
+\usepackage{index}
+\usepackage[backend=biber, sorting=none]{biblatex}
+\addbibresource{library.bib}
+\usepackage[portuguese]{babel}
+\usepackage[paper=a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+%\usepackage{indentfirst}
+\usepackage{bm}
+\newcommand{\bfitDelta}{\bm{\mathit{\Delta}}}
+\usepackage{caption}
+% \numberwithin{equation}{section}
+\usepackage{blindtext}
+
+\newcommand\tabitem{\setlength{\itemindent}{1cm}}
+\newcommand\tabtabitem{\setlength{\itemindent}{2cm}}
+
+\usepackage{ulem}
+\usepackage{times}   % Times New Roman
+
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\thepage}
+
+
+\setlength\parindent{24pt}
+\newcommand\tab[1][0.8cm]{\hspace*{#1}}
+
+\renewcommand{\headrulewidth}{0pt}
+%\newcommand\notab{\setlength{\parindent}{0cm}}
+%\textbf{NEGRITO}
+%\textit{ITÁLICO}
+%\underline{SUBLINHADO}
+\usepackage{afterpage}
+
+\usepackage{appendix}
+
+\usepackage{chngcntr}
+\counterwithin{figure}{section} % NUMERAÇÃO DAS FIGURAS CONSOANTE CAPÍTULO
+\counterwithin{table}{section}  % // TABELAS
+
+
+
+\begin{document}
+
+\renewcommand{\listfigurename}{Índice de figuras}
+
+\renewcommand{\listtablename}{Índice de tabelas}
+    
+%\DeclareNameAlias{sortname}{family-given}
+%\DeclareNameAlias{default}{family-given}
+
+\begin{titlepage}
+\newgeometry{top=1.5cm, bottom=2cm}
+
+
+   \begin{center}
+        \includegraphics[width=0.3\textwidth]{0 - Capa/EEUMfinal.png}\\
+        \vspace{0.2cm}
+        \textbf{Licenciatura em Engenharia Eletrónica e de Computadores}
+       \vfill
+        
+       \textbf{\Large{Caloiros De Elite: Space Invaders}}\\
+       \vspace{0.2cm}
+       \textbf{\large{Complementos de Programação de Computadores}}\\
+
+       \vfill
+   
+
+        Ano Letivo de 2021/2022\\
+        \vspace{0.2pt}
+        a101168, Afonso Gomes\\
+        a101170, Christian Garcia\\
+        \vspace{0.2pt}
+        Guimarães, maio de 2022  \vspace{0.8cm}
+   \end{center}        % CAPA
+\end{titlepage}     % TÍTULO
+
+
+
+\pagebreak
+
+
+
+
+\newgeometry{top=2.5cm, left=2.5cm, right=2.5 cm, bottom=2.5cm}
+\pagenumbering{roman}
+
+
+\setcounter{secnumdepth}{-1}
+\section{Resumo}
+% \markboth{Resumo}{Resumo}
+
+\tab Este trabalho consiste numa explicação extensa da criação do jogo \textbf{"Caloiros de Elite"}, inspirado no jogo \textbf{"Space Invaders"}, desenvolvido pela \textit{Taito Corporation} \cite{spaceInv}.  \par
+\vspace{8pt}
+
+     % 2º parágrafo
+     
+\vspace{8pt}
+
+     % 3º parágrafo
+\vspace{40pt}
+
+
+\pagebreak
+
+\pagebreak
+
+
+\renewcommand{\contentsname}{Índice}        % ÍNDICE
+\tableofcontents
+\addcontentsline{toc}{section}{Índice}
+
+\vspace{40pt}
+\listoffigures
+
+\vspace{40pt}
+\listoftables
+
+\pagebreak
+
+
+\setcounter{secnumdepth}{3}
+
+
+\section{Introdução}\label{Intro}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\tab 
+
+\vspace{8pt}
+
+Grande parte da população que programa as ferramentas de software que utilizamos na atualidade viu-se motivada pelos videojogos da geração dos 70s, 80s e 90s. PACMAN, Tetris e Space Invaders são alguns exemplos deste fenómeno que cada dia influencia a mais jovens e adultos para se mergulharem no imenso banco de dados que conhecemos como a Internet e iniciarem a programar.
+
+\vspace{8pt}
+
+O objetivo deste trabalho é desenvolver um jogo, inspirado por Space Invaders, utilizando as diferentes ferramentas fornecidas pela linguagem de programação C++, nomeadamente, a utilização de OPP (\textit{Object Oriented Programming}), leitura e alteração de ficheiros, entre outros.
+
+\vspace{8pt}
+
+O trabalho distribui-se em diferentes temáticas, sendo estas a descrição geral do jogo (natureza e estratégias utilizadas para a sua implementação),  arquitetura do sistema (são apresentados , de forma geral, os módulos utilizados e a estrutura do jogo) e finalmente a implementação do mesmo, sendo neste último onde vai-se expor ao pormenor cada uma das soluções utilizadas no presente problema.
+
+\pagebreak
+
+\section{Descrição do Problema}
+
+\pagebreak
+
+\section{Arquitetura do Sistema}
+\pagebreak
+
+\section{Implementação do Jogo}
+\pagebreak
+
+\subsection{Representação do Estado do Jogo}
+\pagebreak
+
+\subsection{Inicialização do Estado do Jogo}
+\pagebreak
+
+\subsection{Visualização do Estado do Jogo}
+\pagebreak
+
+\subsection{Mudança de estado/movimento do Jogador}
+\pagebreak
+
+\subsection{Salvar e Restaurar Jogo}
+\pagebreak
+
+\subsection{Final da Execução}
+\pagebreak
+
+\tab Neste sub capítulo serão abordadas figuras, tabelas, equações e listas numeradas/não numeradas.
+
+\subsubsection{Figuras}
+
+\tab A figura \ref{fig:exemplo} é um exemplo da introdução de figuras em \LaTeX:
+
+\begin{figure}[!ht]
+    \centering
+    \caption{Legenda da figura}
+    \label{fig:exemplo}
+\end{figure}
+
+
+\subsubsection{Tabelas}
+
+\tab Na tabela \ref{tab:exemplo} apresenta-se um exemplo de uma tabela em \LaTeX:
+
+\begin{table}[htb]
+\centering
+\caption{abcde \cite{exemplo1, exemplo2}}
+\label{tab:exemplo}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{a}                                   & \textbf{b}               \\ \hline
+a        & b       \\ \hline
+a   & b $\approx$ 0,125 $m^{3}$     \\ \hline
+a & b     \\ \hline
+c        & d \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Equações}
+
+\tab Na equação \ref{eq:conservaçãomassaenergia} apresenta-se um exemplo de uma tabela em \LaTeX:
+
+\begin{equation}\label{eq:conservaçãomassaenergia}
+    E = m \cdot c^{2}
+\end{equation}
+
+\subsubsection{Listas}
+
+\tab Apresente-se agora um exemplo de uma lista numerada:
+
+\begin{enumerate}
+    \tabitem
+    \item item 1;
+    \item item 2.
+\end{enumerate}
+
+Relativamente a listas não numeradas:
+
+\begin{itemize}
+    \tabitem
+    \item item 1;
+    \item item 2.
+\end{itemize}
+
+\pagebreak
+
+
+\section{Conclusões e Perspetivas do Trabalho}
+
+\tab \blindtext
+
+
+\pagebreak
+
+
+
+
+
+
+\printbibliography[title={Referências Bibliográficas}]
+
+
+\pagebreak
+
+
+
+
+
+\appendix
+
+\section{Bibliografia}
+
+\tab \Blindtext
+
+\pagebreak
+
+\end{document}
