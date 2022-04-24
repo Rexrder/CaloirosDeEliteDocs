@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{microtype} %improves justification
 \usepackage{graphicx}
+\usepackage{csquotes}
 \usepackage{wrapfig}
 \usepackage{enumitem}
 \usepackage{fancyhdr} % header
@@ -66,7 +67,7 @@
         \textbf{Licenciatura em Engenharia Eletrónica e de Computadores}
        \vfill
         
-       \textbf{\Large{Caloiros De Elite: Space Invaders}}\\
+       \textbf{\Large{Caloiros De Elite: \textit{Space Invaders}}}\\
        \vspace{0.2cm}
        \textbf{\large{Complementos de Programação de Computadores}}\\
 
@@ -85,8 +86,6 @@
 
 
 \pagebreak
-
-
 
 
 \newgeometry{top=2.5cm, left=2.5cm, right=2.5 cm, bottom=2.5cm}
@@ -137,19 +136,34 @@
 
 \vspace{8pt}
 
-Grande parte da população que programa as ferramentas de software que utilizamos na atualidade viu-se motivada pelos videojogos da geração dos 70s, 80s e 90s. PACMAN, Tetris e Space Invaders são alguns exemplos deste fenómeno que cada dia influencia a mais jovens e adultos para se mergulharem no imenso banco de dados que conhecemos como a Internet e iniciarem a programar.
+Grande parte da população que programa as ferramentas de \textit{software} que utilizamos na atualidade viu-se motivada pelos videojogos da geração dos 70s, 80s e 90s. \textit{PACMAN, Tetris} e \textit{Space Invaders} são alguns exemplos deste fenómeno que cada dia influencia a mais jovens e adultos para se mergulharem no imenso banco de dados que conhecemos como a Internet e iniciarem a programar.
 
 \vspace{8pt}
 
-O objetivo deste trabalho é desenvolver um jogo, inspirado por Space Invaders, utilizando as diferentes ferramentas fornecidas pela linguagem de programação C++, nomeadamente, a utilização de OPP (\textit{Object Oriented Programming}), leitura e alteração de ficheiros, entre outros.
+O objetivo deste trabalho é desenvolver um jogo, inspirado por \textit{Space Invaders}, utilizando as diferentes ferramentas fornecidas pela linguagem de programação C++, nomeadamente, a utilização de OPP (\textit{Object Oriented Programming}), leitura e alteração de ficheiros, entre outros.
 
 \vspace{8pt}
 
-O trabalho distribui-se em diferentes temáticas, sendo estas a descrição geral do jogo (natureza e estratégias utilizadas para a sua implementação),  arquitetura do sistema (são apresentados , de forma geral, os módulos utilizados e a estrutura do jogo) e finalmente a implementação do mesmo, sendo neste último onde vai-se expor ao pormenor cada uma das soluções utilizadas no presente problema.
+O trabalho distribui-se em diferentes temáticas, sendo estas a descrição geral do jogo (natureza e estratégias utilizadas para a sua implementação),  arquitetura do sistema (são apresentados, de forma geral, os módulos utilizados e a estrutura do jogo) e finalmente a implementação do mesmo, sendo neste último aonde vai-se expor ao pormenor cada uma das soluções utilizadas no presente problema.
 
 \pagebreak
 
 \section{Descrição do Problema}
+
+\vspace{8pt}
+
+\tab
+\textit{Caloiros de Elite} é um jogo do subgénero \textit{Shoot'em Up}, onde o jogador, representado de forma determinada pelo símbolo do curso de Eletrónica, tem de acabar com diferentes ondas de inimigos, representados pelos outros cursos de engenharia, e \textit{bosses}, representados pelos departamentos de Medicina e Ciências e pela própria Universidade do Minho. 
+
+\vspace{8pt}
+
+O jogo tem duas modalidades principais. O modo "história", onde se tem de sobreviver o ataque de diferentes inimigos ao longo de três níveis diferentes, e o modo \textit{"Endless"}, em que procura-se obter a máxima pontuação possível enquanto se sobrevive e acaba com inimigos gerados de forma aleatória, infinitamente. A primeira modalidade consta de quatro níveis de dificuldade, transformando o jogo numa experiência mais desafiante, sendo o último, "\textit{Hardcore}", o mais difícil deles todos, com só uma vida. Além da mecânica geral do jogo, este também permite a personalização da nave do jogador, como produto da realização de certos desafios. Os prémios recompensam maioritariamente a habilidade do jogador e/ou tempo de jogo. Estes dados todos (pontuações máximas, prémios obtidos, estatísticas) ficam salvos no fim de cada experiência.
+
+\vspace{8pt}
+
+Para conseguir criar esta experiência de jogo, é necessário recorrer à OOP, sendo que a maioria dos elementos pode e deve ser representada como objetos, com atributos e métodos. Desta forma, conseguimos simplificar o código, iterando funções por entidades semelhantes.
+
+\vspace{8pt}
 
 \pagebreak
 
@@ -177,7 +191,7 @@ O trabalho distribui-se em diferentes temáticas, sendo estas a descrição gera
 \subsection{Final da Execução}
 \pagebreak
 
-\tab Neste sub capítulo serão abordadas figuras, tabelas, equações e listas numeradas/não numeradas.
+\tab Neste subcapítulo serão abordadas figuras, tabelas, equações e listas numeradas/não numeradas.
 
 \subsubsection{Figuras}
 
@@ -192,21 +206,7 @@ O trabalho distribui-se em diferentes temáticas, sendo estas a descrição gera
 
 \subsubsection{Tabelas}
 
-\tab Na tabela \ref{tab:exemplo} apresenta-se um exemplo de uma tabela em \LaTeX:
-
-\begin{table}[htb]
-\centering
-\caption{abcde \cite{exemplo1, exemplo2}}
-\label{tab:exemplo}
-\begin{tabular}{|c|c|}
-\hline
-\textbf{a}                                   & \textbf{b}               \\ \hline
-a        & b       \\ \hline
-a   & b $\approx$ 0,125 $m^{3}$     \\ \hline
-a & b     \\ \hline
-c        & d \\ \hline
-\end{tabular}
-\end{table}
+\tab Na tabela apresenta-se um exemplo de uma tabela em \LaTeX:
 
 \subsubsection{Equações}
 

@@ -1,0 +1,2 @@
+{"rule":"HUNSPELL_RULE","sentence":"^\\QA figura \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q é um exemplo da introdução de figuras em \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q:\\E$"}
+{"rule":"HUNSPELL_RULE","sentence":"^\\QNa equação \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q apresenta-se um exemplo de uma tabela em \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q:\\E$"}
