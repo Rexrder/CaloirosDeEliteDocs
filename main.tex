@@ -181,7 +181,58 @@ Tendo em consideração a dificuldade do projeto, além das estratégias mencion
 
 \vspace{8pt}
 
-\tab
+
+O programa “Caloiros de Elite” através do ponto de vista do utilizador:
+\begin{tabbing}
+    
+
+•	Menu principal: onde o utilizador escolhe de entre várias opções o que deseja fazer
+\end{tabbing}
+\begin{itemize}
+    \tabitem
+    \item \textit{Play}: opção principal do menu que se subdivide em 3 outras opções: ;
+    \tab\item \textit{New Game}: o utilizador opta entre 3 \textit{slots} distintos para guardar o jogo atual. Após a seleção são mostradas 4 dificuldades distintas para o modo história\textit{ (easy,normal,hard e hardcore)} nas quais variam a probabilidade dos inimigos dispararem, a vida dos \textit{bosses} e, no modo \textit{hardcore} as vidas visto que nesta dificuldade o jogador apenas tem 1 vida. 
+    \tab\item \textit{Load Game}: o jogador escolhe entre 3 \textit{slots}, previamente inicializados na opção \textit{New Game}, e continua o jogo presente no \textit{slot} selecionado (com a excepção da dificuldade \textit{hardcore}). 
+    \tab\item   \textit{Endless} : é pedido ao utilizador para inserir um nome que aparece em tempo real com a fonte utilizada ao longo do trabalho. Em seguida começa o jogo desde o início com 2 \textit{bosses} (um \textit{miniboss} e o \textit{boss} principal que contém uma barra de vida exibida no topo do ecrã). Este modo é infinito sendo que o objetivo é conseguir a maior pontuação possível. 
+    \item  \textit{Highscores}: são exibidos os \textit{scores }mais altos, em ordem decrescente de cima para baixo, obtidos no modo \textit{endless} e o nome de quem obteve tal pontuação, nome esse que é inserido quando \textit{endless} é inicializado.
+    \item \textit{Trophies}: são mostrados os diferentes troféus adquiridos após a conclusão de certos desafios. 
+    \item \textit{Settings}: 
+    \item \textit{Credits}: pode-se ver os nomes dos criadores do jogo. 
+\end{itemize}
+	    
+      
+
+        
+                 
+          
+   
+       
+     
+            
+              
+         
+            
+         
+        
+        
+   
+    
+	
+    
+
+    
+
+
+
+
+
+
+
+
+
+\begin{tabbing}
+    
+\end{tabbing}
 O jogo, em nível de estrutura, pode ser divido em "experiência de jogo", gestão de dados, interfase de utilizador e aspetos extras, como apresentado na figura \ref{fig:GameModulesDiagram}, sendo que esta organização não representa de forma direta a própria infraestrutura do código, mas os módulos ou elementos lógicos que compõem o todo que conforma o presente trabalho.
 
 \vspace{8pt}
@@ -220,7 +271,7 @@ O \textit{Gameplay} vê-se refletido na classe \textit{Game}, sendo que esta con
 
 \vspace{8pt}
 
-Embora alguns elementos da UI estão presentes na classe \textit{Game}, nomeadamente, aqueles que têm relação com a \textit{In-Game UI}, a maior parte está representada na classe \textit{Menu}, sendo esta a responsável por gerir e apresentar os \textit{menus} que permitem a visualização de estatísticas e prémios ou a configuração previa a uma experiência de jogo (\textit{skins}, dificuldade e modalidade).
+Embora alguns elementos da UI estão presentes na classe \textit{Game}, nomeadamente, aqueles que têm relação com a \textit{In-Game UI}, a maior parte está representada na classe\dots \textit{Menu}, sendo esta a responsável por gerir e apresentar os \textit{menus} que permitem a visualização de estatísticas e prémios ou a configuração previa a uma experiência de jogo (\textit{skins}, dificuldade e modalidade).
 
 
 \vspace{8pt}
@@ -312,7 +363,12 @@ Relativamente a listas não numeradas:
 
 \section{Conclusões e Perspetivas do Trabalho}
 
-\tab \blindtext
+\tab Ao longo do trabalho foram-nos surgindo vários desafios e problemas que,com muito empenho e pesquisa, conseguimos resolver. Podémos também ter muita liberdade criativa visto que o tema base não nos restringiu de alguma forma, dando nos assim a liberdade para utilizar outras ferramentas para desenhar os sprites de todas as entidadades do jogo. \tab
+    
+Após a realização deste trabalho, conseguimos concluir que as classes lecionadas ao longo do semestre são realmente importantes na linguagem de C++, pois permitem uma melhor organização do código facilitando o trabalho do programador.\tab 
+
+Por fim, em jeito de conclusão, pode dizer-se que este trabalho foi concluído com sucesso, pois conseguimos focar todos os pontos essenciais para a total conclusão do trabalho. Apesar de concluído com sucesso, é importante referir que ao longo de todo o processo de resolução, principalmente na fase de implementação e modulação, surgiram algumas dúvidas, dúvidas essas que felizmente não foram uma barreira que impediu a concretização deste trabalho. Contudo, houve certas funções que gostaríamos de ter implementado que acabaram por não ser concluídas, nomeadamente as technical settings. Esta função não influencia nada na execução do jogo então de forma a não prejudicar a parte mais essencial do projeto, decidimos que esta seria a melhor opção.
+
 
 
 \pagebreak
