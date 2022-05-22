@@ -98,9 +98,23 @@
 
 \tab Este trabalho consiste numa explicação extensa da criação do jogo \textbf{"Caloiros de Elite"}, inspirado no jogo \textbf{"Space Invaders"}, desenvolvido pela \textit{Taito Corporation} \cite{spaceInv}.  \par
 \vspace{8pt}
+Apesar de seus controlos simples,
+comparados com os jogos de hoje, este jogo ajudou a expandir a indústria de video-jogos para
+uma indústria mundial, 
+Deste modo, vamos descrever a forma como pensamos e implementamos este programa em linguagem C++ tendo por base os conceitos teóricos aprendidos nas aulas da unidade curricular.
+Através das nossas pesquisas conseguimos encontrar várias formas de contornar os problemas que
+foram aparecendo, bem como diversas maneiras para os resolver, no entanto procuramos sempre
+solucioná-los de uma forma alternativa baseada nos nossos raciocínios. Assim sendo, ao longo
+deste relatório iremos mostrar, na melhor das nossas capacidades, o pensamento crítico que todos os elementos do grupo tiveram ao longo da implementação do projecto. No fim
+deste mesmo relatório também se poderá encontrar o código implementado, dividido pelas partes
+essências ao mesmo.
 
+<<<<<<< HEAD
 % 2º parágrafo
 
+=======
+     
+>>>>>>> 979dff15ec65d8e43505db5d5052a6adfc572459
 \vspace{8pt}
 
 % 3º parágrafo
@@ -195,6 +209,7 @@ Menu principal: O utilizador escolhe de entre várias opções o que deseja faze
 
     \item   \textit{Endless} : é pedido ao utilizador para inserir um nome que aparece em tempo real com a fonte utilizada ao longo do trabalho. Em seguida começa o jogo desde o início com 2 \textit{bosses} (um \textit{miniboss} e o \textit{boss} principal que contém uma barra de vida exibida no topo do ecrã). Este modo é infinito sendo que o objetivo é conseguir a maior pontuação possível.
     \item  \textit{Highscores}: são exibidos os \textit{scores }mais altos, em ordem decrescente de cima para baixo, obtidos no modo \textit{endless} e o nome de quem obteve tal pontuação, nome esse que é inserido quando \textit{endless} é inicializado.
+<<<<<<< HEAD
     \item \textit{Trophies}: são mostrados os diferentes troféus adquiridos após a conclusão de certos desafios.
     \item \textit{Settings}: opção onde o utilizador pode alterar o programa a seu gosto.
           \begin{itemize}
@@ -202,6 +217,46 @@ Menu principal: O utilizador escolhe de entre várias opções o que deseja faze
               \item  \textit{Technical settings}: a resolução da janela e nível do som podem ser alterados através desta opção.
           \end{itemize}
     \item \textit{Credits}: permite a visualização dos nomes dos criadores do jogo.
+=======
+    
+    \item \textit{Trophies}: são mostrados os diferentes troféus adquiridos após a conclusão de certos desafios. 
+
+    \item \textit{Settings}: opção onde o utilizador pode alterar o programa a seu gosto.
+    \item  \textit{Costumization}: são exibidos vários nomes de curso que o utilizador pode optar para trocar a \textit{Skin} atual da nave, o que influencia os inimigos exibidos (não há inimigos iguais à nave).
+    \item  \textit{Technical settings}: a resolução da janela e nível do som podem ser alterados através desta opção.
+
+    \item \textit{Credits}: pode-se ver os nomes dos criadores do jogo. 
+    
+\end{itemize}
+	    
+      
+
+        
+                 
+          
+   
+       
+     
+            
+              
+         
+            
+         
+        
+        
+   
+    
+	
+    
+
+    
+
+
+
+
+
+
+>>>>>>> 979dff15ec65d8e43505db5d5052a6adfc572459
 
 \end{itemize}
 
@@ -290,12 +345,17 @@ Na inicialização do jogo, o menu abre, carregando a informação necessária d
 Com base nas opções escolhidas no menu, o jogo inicia, tomando como referências os dados mencionados anteriormente.
 
 \subsection{Visualização do Estado do Jogo}
-\pagebreak
+ \tab A parte gráfica deste projeto é bastante única visto que todos as entidades foram desenhados por nós com inspiração nos vários departamentos e cursos de engenharia da Universidade do Minho. Para tal foram utilizadas ferramentas externas. De forma a dar mais mais vida ao jogo utilizamos uma função que funciona como um \textit{Loop} de várias imagens que funciona com um \textit{Timer} diferente do \textit{Timer} principal do jogo.
 
 \subsection{Mudança de estado/movimento do Jogador}
+\tab Inicialmente o jogador começa com 3 vidas, que podem aumentar ,se o jogador atingir uma certa pontuação ou destruir inimigos específicos, ou diminuir caso seja atingido. A nave do jogador pode também ter vários estados que são obtidos através da destruição de \textit{Bosses} ou de ser atingido pelos mesmos. O jogador pode então ter 5 estados: enfortecido,invunerável, lento, rápido, e impedido de disparar. Todos os estados anteriores têm uma imagem diferente que serve de indicador para o utilizador poder distinguir do seu  estado normal. 
+
+\vspace{8pt}
+ O movimento do jogador é bastante simples visto que este apenas pode se movimentar para a direita e para a esquerda.
 \pagebreak
 
 \subsection{Salvar e Restaurar Jogo}
+<<<<<<< HEAD
 
 \vspace{8pt}
 
@@ -306,6 +366,9 @@ No final de cada experiência de jogo (morte do jogador ou finalização do modo
 Estes dados são carregados cada vez que reinicia o menu, utilizando-os para diferentes fins (carregamento do jogo, troféus, \textit{skins} \dots).
 
 
+=======
+\tab Quando um \textit{Slot} é selecionado a partir do submenu \textit{New Game} todos os dados desse espaço irão permanecer no mesmo, com a excepção da dificuldade \textit{Hardcore}. No início de cada nível as estatísticas do utilizador até ao presente momento são guardadas num ficheiro. Quando o jogador morre ou sai do jogo ele pode, através da opção \textit{Load Game}, continuar o modo campanha começando no nível onde deixou. 
+>>>>>>> 979dff15ec65d8e43505db5d5052a6adfc572459
 \pagebreak
 
 \subsection{Final da Execução}
@@ -316,11 +379,20 @@ Estes dados são carregados cada vez que reinicia o menu, utilizando-os para dif
     \item Número de \textit{Bosses} eliminados;
     \item Se o jogador concluiu com sucesso ou não o modo história, e a dificuldade em que estava;
 \end{itemize}
+<<<<<<< HEAD
 É depois atualizado o ficheiro das estatísticas com estes dados. Se o jogo estiver numa dificuldade diferente de \textit{Hardcore} é também gravado o nível onde o \textit{Player} se encontrava antes de morrer podendo este ser carregado mais tarde.
 \begin{tabbing}
 
 \end{tabbing}
 Caso seja \textit{Endless} o \textit{Highscore} é guardado bem como se houve ou não a destruição de um
+=======
+É depois atualizado o ficheiro das estatísticas com estes dados. Se o jogo estiver numa dificuldade diferente de \textit{Hardcore} é também gravado o nível onde o \textit{Player} se encontrava antes de morrer podendo este ser carregado mais tarde. 
+
+\vspace{8pt}
+
+Caso tenha sido selecionado o modo \textit{Endless} o \textit{Highscore} é guardado os pontos obtidos bem como o nome associado a tal pontuação. É também guardado se houve ou não a destruição de uma nave especial que aparece com uma chance aleatória. Os \textit{Highscores} são automáticamente organizados de forma a apenas aparecerem as 8 melhores pontuações.
+Estas informações são mais tarde utilizadas para desbloquear os troféus, exibir os \textit{Highscores} e atualizar as estatísticas	do utilizador.
+>>>>>>> 979dff15ec65d8e43505db5d5052a6adfc572459
 
 \pagebreak
 
