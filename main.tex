@@ -136,7 +136,7 @@
 
 \vspace{8pt}
 
-Grande parte da população que programa as ferramentas de \textit{software} que utilizamos na atualidade viu-se motivada pelos videojogos da geração dos 70s, 80s e 90s. \textit{PACMAN, Tetris} e \textit{Space Invaders} são alguns exemplos deste fenómeno que cada dia influencia a mais jovens e adultos para se mergulharem no imenso banco de dados que conhecemos como a Internet e iniciarem a programar.
+Grande parte da população que programa as ferramentas de \textit{software} que utilizamos na atualidade viu-se motivada pelos videojogos da geração dos 70s, 80s e 90s. \textit{PACMAN, Tetris} e \textit{Space Invaders} são alguns exemplos deste fenómeno que cada dia influencia mais jovens e adultos a mergulharem no imenso banco de dados que conhecemos como a Internet e começarem a programar.
 
 \vspace{8pt}
 
@@ -144,7 +144,7 @@ O objetivo deste trabalho é desenvolver um jogo, inspirado por \textit{Space In
 
 \vspace{8pt}
 
-O trabalho distribui-se em diferentes temáticas, sendo estas a descrição geral do jogo (natureza e estratégias utilizadas para a sua implementação),  arquitetura do sistema (são apresentados, de forma geral, os módulos utilizados e a estrutura do jogo) e finalmente a implementação do mesmo, sendo neste último aonde vai-se expor ao pormenor cada uma das soluções utilizadas no presente problema.
+O trabalho distribui-se em diferentes temáticas, sendo estas a descrição geral do jogo (natureza e estratégias utilizadas para a sua implementação),  arquitetura do sistema (são apresentados, de forma geral, os módulos utilizados e a estrutura do jogo) e finalmente a implementação do mesmo, sendo neste último onde se vai expor ao pormenor cada uma das soluções utilizadas no presente problema.
 
 \pagebreak
 
@@ -153,11 +153,19 @@ O trabalho distribui-se em diferentes temáticas, sendo estas a descrição gera
 \vspace{8pt}
 
 \tab
-\textit{Caloiros de Elite} é um jogo do subgénero \textit{Shoot'em Up}, onde o jogador, representado de forma determinada pelo símbolo do curso de Eletrónica, tem de acabar com diferentes ondas de inimigos, representados pelos outros cursos de engenharia, e \textit{bosses}, representados pelos departamentos de Medicina e Ciências e pela própria Universidade do Minho. 
+\textit{Caloiros de Elite} é um jogo do subgénero \textit{Shoot'em Up}, onde o jogador, representado de forma predeterminada pelo símbolo do curso de Eletrónica, tem de acabar com diferentes ondas de inimigos, representados pelos outros cursos de engenharia, e \textit{bosses}, representados pelos departamentos de Medicina e Ciências e pela própria Universidade do Minho. 
 
 \vspace{8pt}
 
-O jogo tem duas modalidades principais. O modo "história", onde se tem de sobreviver o ataque de diferentes inimigos ao longo de três níveis diferentes, e o modo \textit{"Endless"}, em que procura-se obter a máxima pontuação possível enquanto se sobrevive e acaba com inimigos gerados de forma aleatória, infinitamente. A primeira modalidade consta de quatro níveis de dificuldade, transformando o jogo numa experiência mais desafiante, sendo o último, "\textit{Hardcore}", o mais difícil deles todos, com só uma vida. Além da mecânica geral do jogo, este também permite a personalização da nave do jogador, como produto da realização de certos desafios. Os prémios recompensam maioritariamente a habilidade do jogador e/ou tempo de jogo. Estes dados todos (pontuações máximas, prémios obtidos, estatísticas) ficam salvos no fim de cada experiência.
+O jogo tem duas modalidades principais: o modo "história", onde se tem de sobreviver o ataque de diferentes inimigos ao longo de três níveis diferentes, e o modo \textit{"Endless"}, em que procura-se obter a máxima pontuação possível enquanto se sobrevive e acaba com inimigos gerados de forma aleatória, infinitamente.
+
+\vspace{8pt}
+
+A primeira modalidade, o modo história, consta de quatro níveis de dificuldade, transformando o jogo numa experiência mais desafiante, sendo o último, "\textit{Hardcore}", o mais difícil deles todos, com só uma vida. Ao longo dos três níveis que conformam esta modalidade, o jogador tem de sobreviver e derrotar aos diferentes \textit{bosses} mencionados anteriormente, acabando por se enfrentar a uma versão final da Universidade de Minho, como inimigo definitivo do jogo. O modo \textit{Endless}, em contraste, permite ao jogador uma experiência mais casual, sem perder a natureza desafiante que forma parte intrínseca do jogo (e da vida universitária). Neste, o jogador enfrenta ondas infinitas de inimigos e \textit{bosses}, na tentativa de sobreviver o máximo tempo possível e acabar com a maior quantidade de inimigos, resultando numa maior pontuação final.
+
+\vspace{8pt}
+
+Além da mecânica geral do jogo, este também permite a personalização da nave do jogador, como resultado da realização de certos desafios. Os prémios recompensam maioritariamente a habilidade do jogador e/ou tempo de jogo. Estes dados todos (pontuações máximas, prémios obtidos, estatísticas) ficam salvos no fim de cada experiência e podem ser visualizados em espaços determinados para o efeito (\textit{Hall of Fame}, \textit{Trophies}, \textit{Stats}...)
 
 \vspace{8pt}
 
@@ -165,13 +173,78 @@ Para conseguir criar esta experiência de jogo, é necessário recorrer à OOP, 
 
 \vspace{8pt}
 
+Tendo em consideração a dificuldade do projeto, além das estratégias mencionadas previamente, é necessário a utilização do paradigma \textit{"Divide and Conquer"}, solucionando problemas de menor dimensão e combinando os resultados obtidos para atingir um objetivo final.
+
 \pagebreak
 
 \section{Arquitetura do Sistema}
+
+\vspace{8pt}
+
+\tab
+O jogo, em nível de estrutura, pode ser divido em "experiência de jogo", gestão de dados, interfase de utilizador e aspetos extras, como apresentado na figura \ref{fig:GameModulesDiagram}, sendo que esta organização não representa de forma direta a própria infraestrutura do código, mas os módulos ou elementos lógicos que compõem o todo que conforma o presente trabalho.
+
+\vspace{8pt}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale = 0.60]{2 - Esquemas/GameModulesDiagram.pdf}
+    \caption{Diagrama de blocos no desenvolvimento do jogo}
+    \label{fig:GameModulesDiagram}
+\end{figure}
+
+\vspace{8pt}
+
+O código só utiliza a linha lógica da estrutura apresentada, sendo que soluciona certos problemas que formam parte de "membros" do sistema organizacional em classes que representam maioritariamente membros diferentes, com fins de "simplificar" ou "reutilizar" código.
+
+\vspace{8pt}
+
+\subsection*{\textit{Gameplay}}
+
+\vspace{8pt}
+
+O \textit{Gameplay} vê-se refletido na classe \textit{Game}, sendo que esta controla todo aquilo referente aos elementos de uma experiência de jogo (comportamento das diferentes entidades, registo de pontuação se necessário, tratamento de colisões, entre outros elementos designados ao \textit{Gameplay} previamente). Algumas entidades requerem certo grau de complexidade, resultando na sua categorização exclusiva como "objetos do jogo", classe \textit{Objects}, engendrando as classes \textit{Player, Bullets, Enemies} e \textit{Bosses} (Figura \ref{fig:ClassGameplay}). No início de cada experiência de jogo, cria-se um objeto do tipo \textit{Gameplay}, criando este um objeto da classe \textit{Player} e, de forma dinâmica, variedade de objetos das outras subclasses de \textit{Objects}, conforme o jogo se desenvolve.
+
+\vspace{8pt}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale = 0.60]{2 - Esquemas/ClassGameplay.pdf}
+    \caption{Diagrama de blocos da distribuição e estrutura do módulo \textit{Gameplay}}
+    \label{fig:ClassGameplay}
+\end{figure}
+
+\vspace{8pt}
+
+\subsection*{UI - \textit{User Interface}}
+
+\vspace{8pt}
+
+Embora alguns elementos da UI estão presentes na classe \textit{Game}, nomeadamente, aqueles que têm relação com a \textit{In-Game UI}, a maior parte está representada na classe\dots \textit{Menu}, sendo esta a responsável por gerir e apresentar os \textit{menus} que permitem a visualização de estatísticas e prémios ou a configuração previa a uma experiência de jogo (\textit{skins}, dificuldade e modalidade).
+
+
+\vspace{8pt}
+
+\subsection*{\textit{File Management}}
+
+\vspace{8pt}
+
+\subsection*{Extras}
+
+\vspace{8pt}
+
+
 \pagebreak
 
 \section{Implementação do Jogo}
-\pagebreak
+
+\vspace{8pt}
+
+\tab
+
+"Caloiros de Elite" 
+
+\vspace{8pt}
 
 \subsection{Representação do Estado do Jogo}
 \pagebreak
