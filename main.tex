@@ -109,14 +109,6 @@ deste relatório iremos mostrar, na melhor das nossas capacidades, o pensamento 
 deste mesmo relatório também se poderá encontrar o código implementado, dividido pelas partes
 essências ao mesmo.
 
-<<<<<<< HEAD
-% 2º parágrafo
-
-=======
-     
->>>>>>> 979dff15ec65d8e43505db5d5052a6adfc572459
-\vspace{8pt}
-
 % 3º parágrafo
 \vspace{40pt}
 
@@ -209,7 +201,7 @@ Menu principal: O utilizador escolhe de entre várias opções o que deseja faze
 
     \item   \textit{Endless} : é pedido ao utilizador para inserir um nome que aparece em tempo real com a fonte utilizada ao longo do trabalho. Em seguida começa o jogo desde o início com 2 \textit{bosses} (um \textit{miniboss} e o \textit{boss} principal que contém uma barra de vida exibida no topo do ecrã). Este modo é infinito sendo que o objetivo é conseguir a maior pontuação possível.
     \item  \textit{Highscores}: são exibidos os \textit{scores }mais altos, em ordem decrescente de cima para baixo, obtidos no modo \textit{endless} e o nome de quem obteve tal pontuação, nome esse que é inserido quando \textit{endless} é inicializado.
-<<<<<<< HEAD
+
     \item \textit{Trophies}: são mostrados os diferentes troféus adquiridos após a conclusão de certos desafios.
     \item \textit{Settings}: opção onde o utilizador pode alterar o programa a seu gosto.
           \begin{itemize}
@@ -217,7 +209,6 @@ Menu principal: O utilizador escolhe de entre várias opções o que deseja faze
               \item  \textit{Technical settings}: a resolução da janela e nível do som podem ser alterados através desta opção.
           \end{itemize}
     \item \textit{Credits}: permite a visualização dos nomes dos criadores do jogo.
-=======
     
     \item \textit{Trophies}: são mostrados os diferentes troféus adquiridos após a conclusão de certos desafios. 
 
@@ -229,37 +220,6 @@ Menu principal: O utilizador escolhe de entre várias opções o que deseja faze
     
 \end{itemize}
 	    
-      
-
-        
-                 
-          
-   
-       
-     
-            
-              
-         
-            
-         
-        
-        
-   
-    
-	
-    
-
-    
-
-
-
-
-
-
->>>>>>> 979dff15ec65d8e43505db5d5052a6adfc572459
-
-\end{itemize}
-
 \begin{figure}[]
     \centering
     \includegraphics[scale = 0.20]{2 - Esquemas/GameStructure.pdf}
@@ -355,7 +315,6 @@ Com base nas opções escolhidas no menu, o jogo inicia, tomando como referênci
 \pagebreak
 
 \subsection{Salvar e Restaurar Jogo}
-<<<<<<< HEAD
 
 \vspace{8pt}
 
@@ -366,9 +325,8 @@ No final de cada experiência de jogo (morte do jogador ou finalização do modo
 Estes dados são carregados cada vez que reinicia o menu, utilizando-os para diferentes fins (carregamento do jogo, troféus, \textit{skins} \dots).
 
 
-=======
 \tab Quando um \textit{Slot} é selecionado a partir do submenu \textit{New Game} todos os dados desse espaço irão permanecer no mesmo, com a excepção da dificuldade \textit{Hardcore}. No início de cada nível as estatísticas do utilizador até ao presente momento são guardadas num ficheiro. Quando o jogador morre ou sai do jogo ele pode, através da opção \textit{Load Game}, continuar o modo campanha começando no nível onde deixou. 
->>>>>>> 979dff15ec65d8e43505db5d5052a6adfc572459
+
 \pagebreak
 
 \subsection{Final da Execução}
@@ -379,7 +337,6 @@ Estes dados são carregados cada vez que reinicia o menu, utilizando-os para dif
     \item Número de \textit{Bosses} eliminados;
     \item Se o jogador concluiu com sucesso ou não o modo história, e a dificuldade em que estava;
 \end{itemize}
-<<<<<<< HEAD
 É depois atualizado o ficheiro das estatísticas com estes dados. Se o jogo estiver numa dificuldade diferente de \textit{Hardcore} é também gravado o nível onde o \textit{Player} se encontrava antes de morrer podendo este ser carregado mais tarde.
 \begin{tabbing}
 
@@ -392,52 +349,6 @@ Caso seja \textit{Endless} o \textit{Highscore} é guardado bem como se houve ou
 
 Caso tenha sido selecionado o modo \textit{Endless} o \textit{Highscore} é guardado os pontos obtidos bem como o nome associado a tal pontuação. É também guardado se houve ou não a destruição de uma nave especial que aparece com uma chance aleatória. Os \textit{Highscores} são automáticamente organizados de forma a apenas aparecerem as 8 melhores pontuações.
 Estas informações são mais tarde utilizadas para desbloquear os troféus, exibir os \textit{Highscores} e atualizar as estatísticas	do utilizador.
->>>>>>> 979dff15ec65d8e43505db5d5052a6adfc572459
-
-\pagebreak
-
-\tab Neste subcapítulo serão abordadas figuras, tabelas, equações e listas numeradas/não numeradas.
-
-\subsubsection{Figuras}
-
-\tab A figura \ref{fig:exemplo} é um exemplo da introdução de figuras em \LaTeX:
-
-\begin{figure}[!h]
-    \centering
-    \caption{Legenda da figura}
-    \label{fig:exemplo}
-\end{figure}
-
-
-\subsubsection{Tabelas}
-
-\tab Na tabela apresenta-se um exemplo de uma tabela em \LaTeX:
-
-\subsubsection{Equações}
-
-\tab Na equação \ref{eq:conservaçãomassaenergia} apresenta-se um exemplo de uma tabela em \LaTeX:
-
-\begin{equation}\label{eq:conservaçãomassaenergia}
-    E = m \cdot c^{2}
-\end{equation}
-
-\subsubsection{Listas}
-
-\tab Apresente-se agora um exemplo de uma lista numerada:
-
-\begin{enumerate}
-    \tabitem
-    \item item 1;
-    \item item 2.
-\end{enumerate}
-
-Relativamente a listas não numeradas:
-
-\begin{itemize}
-    \tabitem
-    \item item 1;
-    \item item 2.
-\end{itemize}
 
 \pagebreak
 
