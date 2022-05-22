@@ -98,8 +98,17 @@
 
 \tab Este trabalho consiste numa explicação extensa da criação do jogo \textbf{"Caloiros de Elite"}, inspirado no jogo \textbf{"Space Invaders"}, desenvolvido pela \textit{Taito Corporation} \cite{spaceInv}.  \par
 \vspace{8pt}
+Apesar de seus controlos simples,
+comparados com os jogos de hoje, este jogo ajudou a expandir a indústria de video-jogos para
+uma indústria mundial, 
+Deste modo, vamos descrever a forma como pensamos e implementamos este programa em linguagem C++ tendo por base os conceitos teóricos aprendidos nas aulas da unidade curricular.
+Através das nossas pesquisas conseguimos encontrar várias formas de contornar os problemas que
+foram aparecendo, bem como diversas maneiras para os resolver, no entanto procuramos sempre
+solucioná-los de uma forma alternativa baseada nos nossos raciocínios. Assim sendo, ao longo
+deste relatório iremos mostrar, na melhor das nossas capacidades, o pensamento crítico e de engenharia que todos os elementos do grupo tiveram ao longo da implementação do projecto. No fim
+deste mesmo relatório também se poderá encontrar o código implementado, dividido pelas partes
+essências ao mesmo.
 
-     % 2º parágrafo
      
 \vspace{8pt}
 
@@ -197,27 +206,11 @@ O programa “Caloiros de Elite” através do ponto de vista do utilizador:
     \item  \textit{Highscores}: são exibidos os \textit{scores }mais altos, em ordem decrescente de cima para baixo, obtidos no modo \textit{endless} e o nome de quem obteve tal pontuação, nome esse que é inserido quando \textit{endless} é inicializado.
     
     \item \textit{Trophies}: são mostrados os diferentes troféus adquiridos após a conclusão de certos desafios. 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     \item \textit{Settings}: opção onde o utilizador pode alterar o programa a seu gosto.
     \item  \textit{Costumization}: são exibidos vários nomes de curso que o utilizador pode optar para trocar a \textit{Skin} atual da nave, o que influencia os inimigos exibidos (não há inimigos iguais à nave).
     \item  \textit{Technical settings}: a resolução da janela e nível do som podem ser alterados através desta opção.
-=======
-    
-    \item \textit{Settings}: 
-    
->>>>>>> 850b8d194ad84a18eabc31ad02d1bb4b2fd62c4c
-=======
-    
-    \item \textit{Settings}: 
-    
->>>>>>> 850b8d194ad84a18eabc31ad02d1bb4b2fd62c4c
-=======
-    
-    \item \textit{Settings}: 
-    
->>>>>>> 850b8d194ad84a18eabc31ad02d1bb4b2fd62c4c
+
     \item \textit{Credits}: pode-se ver os nomes dos criadores do jogo. 
     
 \end{itemize}
@@ -328,7 +321,7 @@ O \textit{File Management} ocorre maioritariamente no menu onde são carregadas 
 \pagebreak
 
 \subsection{Visualização do Estado do Jogo}
-\pagebreak
+ Ao longo
 
 \subsection{Mudança de estado/movimento do Jogador}
 \pagebreak
@@ -345,10 +338,11 @@ O \textit{File Management} ocorre maioritariamente no menu onde são carregadas 
     \item Se o jogador concluiu com sucesso ou não o modo história, e a dificuldade em que estava;
 \end{itemize}
 É depois atualizado o ficheiro das estatísticas com estes dados. Se o jogo estiver numa dificuldade diferente de \textit{Hardcore} é também gravado o nível onde o \textit{Player} se encontrava antes de morrer podendo este ser carregado mais tarde. 
-\begin{tabbing}
-    
-\end{tabbing}
-Caso seja \textit{Endless} o \textit{Highscore} é guardado bem como se houve ou não a destruição de um
+
+\vspace{8pt}
+
+Caso tenha sido selecionado o modo \textit{Endless} o \textit{Highscore} é guardado os pontos obtidos bem como o nome associado a tal pontuação. É também guardado se houve ou não a destruição de uma nave especial que aparece com uma chance aleatória. Os \textit{Highscores} são automáticamente organizados de forma a apenas aparecerem as 8 melhores pontuações.
+Estas informações são mais tarde utilizadas para desbloquear os troféus, exibir os \textit{Highscores} e atualizar as estatísticas	do utilizador.
 
 \pagebreak
 
