@@ -105,7 +105,7 @@ Deste modo, vamos descrever a forma como pensamos e implementamos este programa 
 Através das nossas pesquisas conseguimos encontrar várias formas de contornar os problemas que
 foram aparecendo, bem como diversas maneiras para os resolver, no entanto procuramos sempre
 solucioná-los de uma forma alternativa baseada nos nossos raciocínios. Assim sendo, ao longo
-deste relatório iremos mostrar, na melhor das nossas capacidades, o pensamento crítico e de engenharia que todos os elementos do grupo tiveram ao longo da implementação do projecto. No fim
+deste relatório iremos mostrar, na melhor das nossas capacidades, o pensamento crítico que todos os elementos do grupo tiveram ao longo da implementação do projecto. No fim
 deste mesmo relatório também se poderá encontrar o código implementado, dividido pelas partes
 essências ao mesmo.
 
@@ -321,12 +321,17 @@ O \textit{File Management} ocorre maioritariamente no menu onde são carregadas 
 \pagebreak
 
 \subsection{Visualização do Estado do Jogo}
- Ao longo
+ \tab A parte gráfica deste projeto é bastante única visto que todos as entidades foram desenhados por nós com inspiração nos vários departamentos e cursos de engenharia da Universidade do Minho. Para tal foram utilizadas ferramentas externas. De forma a dar mais mais vida ao jogo utilizamos uma função que funciona como um \textit{Loop} de várias imagens que funciona com um \textit{Timer} diferente do \textit{Timer} principal do jogo.
 
 \subsection{Mudança de estado/movimento do Jogador}
+\tab Inicialmente o jogador começa com 3 vidas, que podem aumentar ,se o jogador atingir uma certa pontuação ou destruir inimigos específicos, ou diminuir caso seja atingido. A nave do jogador pode também ter vários estados que são obtidos através da destruição de \textit{Bosses} ou de ser atingido pelos mesmos. O jogador pode então ter 5 estados: enfortecido,invunerável, lento, rápido, e impedido de disparar. Todos os estados anteriores têm uma imagem diferente que serve de indicador para o utilizador poder distinguir do seu  estado normal. 
+
+\vspace{8pt}
+ O movimento do jogador é bastante simples visto que este apenas pode se movimentar para a direita e para a esquerda.
 \pagebreak
 
 \subsection{Salvar e Restaurar Jogo}
+\tab Quando um \textit{Slot} é selecionado a partir do submenu \textit{New Game} todos os dados desse espaço irão permanecer no mesmo, com a excepção da dificuldade \textit{Hardcore}. No início de cada nível as estatísticas do utilizador até ao presente momento são guardadas num ficheiro. Quando o jogador morre ou sai do jogo ele pode, através da opção \textit{Load Game}, continuar o modo campanha começando no nível onde deixou. 
 \pagebreak
 
 \subsection{Final da Execução}
