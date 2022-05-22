@@ -196,7 +196,9 @@ O programa “Caloiros de Elite” através do ponto de vista do utilizador:
     \tab\item   \textit{Endless} : é pedido ao utilizador para inserir um nome que aparece em tempo real com a fonte utilizada ao longo do trabalho. Em seguida começa o jogo desde o início com 2 \textit{bosses} (um \textit{miniboss} e o \textit{boss} principal que contém uma barra de vida exibida no topo do ecrã). Este modo é infinito sendo que o objetivo é conseguir a maior pontuação possível. 
     \item  \textit{Highscores}: são exibidos os \textit{scores }mais altos, em ordem decrescente de cima para baixo, obtidos no modo \textit{endless} e o nome de quem obteve tal pontuação, nome esse que é inserido quando \textit{endless} é inicializado.
     \item \textit{Trophies}: são mostrados os diferentes troféus adquiridos após a conclusão de certos desafios. 
-    \item \textit{Settings}: 
+    \item \textit{Settings}: opção onde o utilizador pode alterar o programa a seu gosto.
+    \item  \textit{Costumization}: são exibidos vários nomes de curso que o utilizador pode optar para trocar a \textit{Skin} atual da nave, o que influencia os inimigos exibidos (não há inimigos iguais à nave).
+    \item  \textit{Technical settings}: a resolução da janela e nível do som podem ser alterados através desta opção.
     \item \textit{Credits}: pode-se ver os nomes dos criadores do jogo. 
 \end{itemize}
 	    
@@ -233,7 +235,7 @@ O programa “Caloiros de Elite” através do ponto de vista do utilizador:
 \begin{tabbing}
     
 \end{tabbing}
-O jogo, em nível de estrutura, pode ser divido em "experiência de jogo", gestão de dados, interfase de utilizador e aspetos extras, como apresentado na figura \ref{fig:GameModulesDiagram}, sendo que esta organização não representa de forma direta a própria infraestrutura do código, mas os módulos ou elementos lógicos que compõem o todo que conforma o presente trabalho.
+O jogo, em nível de estrutura, pode ser divido em "experiência de jogo", gestão de dados, interface de utilizador e aspetos extras, como apresentado na figura \ref{fig:GameModulesDiagram}, sendo que esta organização não representa de forma direta a própria infraestrutura do código, mas os módulos ou elementos lógicos que compõem o todo que conforma o presente trabalho.
 
 \vspace{8pt}
 
@@ -277,6 +279,8 @@ Embora alguns elementos da UI estão presentes na classe \textit{Game}, nomeadam
 \vspace{8pt}
 
 \subsection*{\textit{File Management}}
+O \textit{File Management} ocorre maioritariamente no menu onde são carregadas as estatísticas do jogo bem como os \textit{Highscores}, troféus e \textit{Skins} desbloqueadas. Toda a informação previamente mencionada é gravada num ficheiro no final de cada partida. Existe também algum \textit{File Management} nas opções \textit{New Game} e \textit{Load Game} onde são guardadas e carregadas as estatísticas do jogo atual, contudo, quando a dificuldade é \textit{Hardcore} não há qualquer carregamento do jogo atual.
+
 
 \vspace{8pt}
 
