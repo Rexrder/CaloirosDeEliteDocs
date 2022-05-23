@@ -7,6 +7,8 @@
 \usepackage{enumitem}
 \usepackage{fancyhdr} % header
 \usepackage{amsmath} % math formulas
+\usepackage{float}
+\usepackage{listings}
 \usepackage{index}
 \usepackage[backend=biber, sorting=none]{biblatex}
 \addbibresource{library.bib}
@@ -53,26 +55,26 @@
 \renewcommand{\listfigurename}{Índice de figuras}
 
 \renewcommand{\listtablename}{Índice de tabelas}
-    
+
 %\DeclareNameAlias{sortname}{family-given}
 %\DeclareNameAlias{default}{family-given}
 
 \begin{titlepage}
-\newgeometry{top=1.5cm, bottom=2cm}
+    \newgeometry{top=1.5cm, bottom=2cm}
 
 
-   \begin{center}
+    \begin{center}
         \includegraphics[width=0.3\textwidth]{0 - Capa/EEUMfinal.png}\\
         \vspace{0.2cm}
         \textbf{Licenciatura em Engenharia Eletrónica e de Computadores}
-       \vfill
-        
-       \textbf{\Large{Caloiros De Elite: \textit{Space Invaders}}}\\
-       \vspace{0.2cm}
-       \textbf{\large{Complementos de Programação de Computadores}}\\
+        \vfill
 
-       \vfill
-   
+        \textbf{\Large{Caloiros De Elite: \textit{Space Invaders}}}\\
+        \vspace{0.2cm}
+        \textbf{\large{Complementos de Programação de Computadores}}\\
+
+        \vfill
+
 
         Ano Letivo de 2021/2022\\
         \vspace{0.2pt}
@@ -80,7 +82,7 @@
         a101170, Christian Garcia\\
         \vspace{0.2pt}
         Guimarães, maio de 2022  \vspace{0.8cm}
-   \end{center}        % CAPA
+    \end{center}        % CAPA
 \end{titlepage}     % TÍTULO
 
 
@@ -97,6 +99,7 @@
 % \markboth{Resumo}{Resumo}
 
 \tab Este trabalho consiste numa explicação extensa da criação do jogo \textbf{"Caloiros de Elite"}, inspirado no jogo \textbf{"Space Invaders"}, desenvolvido pela \textit{Taito Corporation} \cite{spaceInv}.  \par
+
 \vspace{8pt}
 Apesar dos seus controlos simples,
 comparados com os jogos de hoje, este jogo ajudou a expandir a indústria de videojogos para
@@ -108,10 +111,15 @@ deste relatório iremos mostrar, na melhor das nossas capacidades, o pensamento 
 deste mesmo relatório também se poderá encontrar o código implementado, dividido pelas partes
 essências ao mesmo.
 
-     
+Apesar dos seus controlos simples,
+comparados com os jogos de hoje, este jogo ajudou a expandir a indústria de videojogos para
+uma indústria mundial. Deste modo, vamos descrever como pensamos e implementamos este programa em linguagem C++ tendo por base os conceitos teóricos aprendidos nas aulas da unidade curricular.
+
 \vspace{8pt}
 
-     % 3º parágrafo
+Através das nossas pesquisas conseguimos encontrar várias formas de contornar os problemas que apareceram, bem como diversas maneiras para os resolver, no entanto, procuramos sempre solucioná-los de uma forma alternativa baseada nos nossos raciocínios. Assim sendo, ao longo deste relatório iremos mostrar, na melhor das nossas capacidades, o pensamento crítico que todos os elementos do grupo tiveram ao longo da implementação do projeto. No fim do mesmo, também se poderá encontrar o código implementado, dividido pelas partes essências do mesmo.
+
+% 3º parágrafo
 \vspace{40pt}
 
 
@@ -127,9 +135,6 @@ essências ao mesmo.
 \vspace{40pt}
 \listoffigures
 
-\vspace{40pt}
-\listoftables
-
 \pagebreak
 
 
@@ -140,7 +145,7 @@ essências ao mesmo.
 
 \pagenumbering{arabic}
 \setcounter{page}{1}
-\tab 
+\tab
 
 \vspace{8pt}
 
@@ -161,7 +166,7 @@ O trabalho distribui-se em diferentes temáticas, sendo estas a descrição gera
 \vspace{8pt}
 
 \tab
-\textit{Caloiros de Elite} é um jogo do subgénero \textit{Shoot'em Up}, onde o jogador, representado de forma predeterminada pelo símbolo do curso de Eletrónica, tem de acabar com diferentes ondas de inimigos, representados pelos outros cursos de engenharia, e \textit{bosses}, representados pelos departamentos de Medicina e Ciências e pela própria Universidade do Minho. 
+\textit{Caloiros de Elite} é um jogo do subgénero \textit{Shoot'em Up}, onde o jogador, representado de forma predeterminada pelo símbolo do curso de Eletrónica, tem de acabar com diferentes ondas de inimigos, representados pelos outros cursos de engenharia, e \textit{bosses}, representados pelos departamentos de Medicina e Ciências e pela própria Universidade do Minho.
 
 \vspace{8pt}
 
@@ -189,71 +194,53 @@ Tendo em consideração a dificuldade do projeto, além das estratégias mencion
 
 \vspace{8pt}
 
-
 O programa “Caloiros de Elite” através do ponto de vista do utilizador:
 
+\vspace{8pt}
+
+Menu principal: O utilizador escolhe de entre várias opções o que deseja fazer:
+
 \begin{itemize}
-    \item Menu principal: O utilizador escolhe de entre várias opções o que deseja fazer
-    \tabitem
     \item \textit{Play}: opção principal do menu que se subdivide em 3 outras opções:
     \item \textit{New Game}: o utilizador opta entre 3 \textit{slots} distintos para guardar o jogo atual. Após a seleção são mostradas 4 dificuldades distintas para o modo história\textit{ (easy,normal,hard e hardcore)} nas quais variam a probabilidade dos inimigos dispararem, a vida dos \textit{bosses} e, no modo \textit{hardcore} as vidas visto que nesta dificuldade o jogador apenas tem 1 vida.
 
     \item \textit{Load Game}: o jogador escolhe entre 3 \textit{slots}, previamente inicializados na opção \textit{New Game}, e continua o jogo presente no \textit{slot} selecionado (com a excepção da dificuldade \textit{hardcore}).
 
     \item   \textit{Endless} : é pedido ao utilizador para inserir um nome que aparece em tempo real com a fonte utilizada ao longo do trabalho. Em seguida começa o jogo desde o início com 2 \textit{bosses} (um \textit{miniboss} e o \textit{boss} principal que contém uma barra de vida exibida no topo do ecrã). Este modo é infinito sendo que o objetivo é conseguir a maior pontuação possível.
-
     \item  \textit{Highscores}: são exibidos os \textit{scores }mais altos, em ordem decrescente de cima para baixo, obtidos no modo \textit{endless} e o nome de quem obteve tal pontuação, nome esse que é inserido quando \textit{endless} é inicializado.
-    
-    \item \textit{Trophies}: são mostrados os diferentes troféus adquiridos após a conclusão de certos desafios. 
+
+    \item \textit{Trophies}: são mostrados os diferentes troféus adquiridos após a conclusão de certos desafios.
+    \item \textit{Settings}: opção onde o utilizador pode alterar o programa a seu gosto.
+          \begin{itemize}
+              \item  \textit{Costumization}: são exibidos vários nomes de curso que o utilizador pode optar para trocar a \textit{Skin} atual da nave, o que influencia os inimigos exibidos (não há inimigos iguais à nave).
+              \item  \textit{Technical settings}: a resolução da janela e nível do som podem ser alterados através desta opção.
+          \end{itemize}
+    \item \textit{Credits}: permite a visualização dos nomes dos criadores do jogo.
+
+    \item \textit{Trophies}: são mostrados os diferentes troféus adquiridos após a conclusão de certos desafios.
 
     \item \textit{Settings}: opção onde o utilizador pode alterar o programa a seu gosto.
     \item  \textit{Costumization}: são exibidos vários nomes de curso que o utilizador pode optar para trocar a \textit{Skin} atual da nave, o que influencia os inimigos exibidos (não há inimigos iguais à nave).
     \item  \textit{Technical settings}: a resolução da janela e nível do som podem ser alterados através desta opção.
 
-    \item \textit{Credits}: pode-se ver os nomes dos criadores do jogo. 
-    
+    \item \textit{Credits}: pode-se ver os nomes dos criadores do jogo.
+
 \end{itemize}
-	    
-      
 
-        
-                 
-          
-   
-       
-     
-            
-              
-         
-            
-         
-        
-        
-   
-    
-	
-    
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.20]{2 - Esquemas/GameStructure.pdf}
+    \caption{Diagrama de blocos da estrutura do jogo desde o ponto de vista do utilizador}
+    \label{fig:GameModulesDiagram}
+\end{figure}
 
-    
-
-
-
-
-
-
-
-
-
-\begin{tabbing}
-    
-\end{tabbing}
-O jogo, em nível de estrutura, pode ser divido em "experiência de jogo", gestão de dados, interface de utilizador e aspetos extras, como apresentado na figura \ref{fig:GameModulesDiagram}, sendo que esta organização não representa de forma direta a própria infraestrutura do código, mas os módulos ou elementos lógicos que compõem o todo que conforma o presente trabalho.
+O jogo, em nível de estrutura interna, pode ser divido em "experiência de jogo", gestão de dados, interface de utilizador e aspetos extras, como apresentado na figura \ref{fig:GameModulesDiagram}, sendo que esta organização não representa de forma direta a própria infraestrutura do código, mas os módulos ou elementos lógicos que compõem o todo que conforma o presente trabalho.
 
 \vspace{8pt}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.60]{2 - Esquemas/GameModulesDiagram.pdf}
+    \includegraphics[scale = 0.50]{2 - Esquemas/GameModulesDiagram.pdf}
     \caption{Diagrama de blocos no desenvolvimento do jogo}
     \label{fig:GameModulesDiagram}
 \end{figure}
@@ -272,9 +259,9 @@ O \textit{Gameplay} vê-se refletido na classe \textit{Game}, sendo que esta con
 
 \vspace{8pt}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.60]{2 - Esquemas/ClassGameplay.pdf}
+    \includegraphics[scale = 0.50]{2 - Esquemas/ClassGameplay.pdf}
     \caption{Diagrama de blocos da distribuição e estrutura do módulo \textit{Gameplay}}
     \label{fig:ClassGameplay}
 \end{figure}
@@ -285,14 +272,13 @@ O \textit{Gameplay} vê-se refletido na classe \textit{Game}, sendo que esta con
 
 \vspace{8pt}
 
-Embora alguns elementos da UI estão presentes na classe \textit{Game}, nomeadamente, aqueles que têm relação com a \textit{In-Game UI}, a maior parte está representada na classe\dots \textit{Menu}, sendo esta a responsável por gerir e apresentar os \textit{menus} que permitem a visualização de estatísticas e prémios ou a configuração previa a uma experiência de jogo (\textit{skins}, dificuldade e modalidade).
+Embora alguns elementos da UI estão presentes na classe \textit{Game}, nomeadamente, aqueles que têm relação com a \textit{In-Game UI}, a maior parte está representada na classe \textit{Menu}, sendo esta a responsável por gerir e apresentar os \textit{menus} que permitem a visualização de estatísticas e prémios ou a configuração previa a uma experiência de jogo (\textit{skins}, dificuldade e modalidade).
 
 
 \vspace{8pt}
 
 \subsection*{\textit{File Management}}
-O \textit{File Management} ocorre maioritariamente no menu onde são carregadas as estatísticas do jogo bem como os \textit{Highscores}, troféus e \textit{Skins} desbloqueadas. Toda a informação previamente mencionada é gravada num ficheiro no final de cada partida. Existe também algum \textit{File Management} nas opções \textit{New Game} e \textit{Load Game} onde são guardadas e carregadas as estatísticas do jogo atual, contudo, quando a dificuldade é \textit{Hardcore} não há nenhum carregamento do jogo atual.
-
+O \textit{File Management} ocorre maioritariamente no menu onde são carregadas as estatísticas do jogo bem como os \textit{Highscores}, sendo desta forma que se definem os troféus e \textit{Skins} desbloqueadas. Toda a informação previamente mencionada é gravada num ficheiro no final de cada partida (experiêncua de jogo). O \textit{File Management} também aplica na utilização da função  \textit{Load Game} onde são carregadas as informações do ficheiro \textit{"save.txt"} aos slots correspondentes. Contudo, quando a dificuldade é \textit{Hardcore} não existe carregamento do jogo atual.
 
 \vspace{8pt}
 
@@ -300,6 +286,7 @@ O \textit{File Management} ocorre maioritariamente no menu onde são carregadas 
 
 \vspace{8pt}
 
+Os "extras" do jogo não se encontram confinados num módulo específico, mas sim ao longo dos módulos todos (sendo a classe \textit{Menu}, a principal delas todas). Funções específicas e não essenciais como os \textit{Easter Eggs}(representado pela classe \textit{Bonus}), a possibilidade de escolher naves visualmente diferentes e a realização de troféus acabam por ser elementos que motivam ao utilizador a continuar no jogo.
 
 \pagebreak
 
@@ -307,31 +294,122 @@ O \textit{File Management} ocorre maioritariamente no menu onde são carregadas 
 
 \vspace{8pt}
 
-\tab
+\tab "Caloiros de Elite", embora visualmente simplista, resulta diferentes ferramentas informáticas e de código que quando combinados, produzem um jogo desfrutável para o utilizador e satisfatório para os criadores.
 
-"Caloiros de Elite" 
+\vspace{8pt}
+
+Para isto, criaram-se as seguintes classes, que permitem a realização do trabalho:
+
+\begin{itemize}
+    \item  \textit{Menu}: Encarrega-se de gerir tudo o relacionado ao menu inicial.
+    \item \textit{Game}: Encarrega-se de gerir a interação dos diferentes elementos de uma experiência do jogo (colisões, movimento \dots), simplificando e organizando o código.
+          item  \textit{Objects}: Classe base das classes que representam elementos ativos numa experiência de jogo. Simplifica o código, reutilizando membros e métodos comuns.
+    \item \textit{Player}: Classe que permite a criação e controlo do "jogador".
+    \item  \textit{Enemies}: Classe que permite criar e controlar inimigos.
+    \item \textit{Bosses}: Classe que permite criar e controlar inimigos especiais (\textit{bosses} e \textit{megabosses}).
+    \item \textit{Bonus}: Classe que controla o Easter Egg da modalidade \textit{Endless}.
+\end{itemize}
+
+\vspace{8pt}
+
+Além de um ficheiro extra para funções úteis ao longo do programa. A seguir, o .h do mesmo.
+
+\begin{lstlisting}[language = C++]
+
+#include "Objects.h"
+#ifndef FUNCS
+#define FUNCS
+bool verifyCollision(int*, int*); //allows to verify collisions
+bool animation(int start, int end, int&, int&, bool ping_pong);
+bool compareHighs(const HighscrStat& first, const HighscrStat& second);
+void rangeDef(int &val, int* rang); //define range for options
+#endif
+
+\end{lstlisting}
 
 \vspace{8pt}
 
 \subsection{Representação do Estado do Jogo}
-\pagebreak
-
-\subsection{Inicialização do Estado do Jogo}
-\pagebreak
-
-\subsection{Visualização do Estado do Jogo}
- \tab A parte gráfica deste projeto é bastante única visto que todas as entidades foram desenhados por nós com inspiração nos vários departamentos e cursos de engenharia da Universidade do Minho. Para tal foram utilizadas ferramentas externas. Para dar mais vida ao jogo utilizamos uma função que funciona como um \textit{Loop} de várias imagens que funciona com um \textit{Timer} diferente do \textit{Timer} principal do jogo. Foram também utilizados vários indicadores através de mudanças gráficas para o jogador está sobre algum efeito.
-
-\subsection{Mudança de estado/movimento do Jogador}
-\tab Inicialmente o jogador começa com 3 vidas, que podem aumentar, se o jogador atingir uma certa pontuação ou destruir inimigos específicos, ou diminuir caso seja atingido. A nave do jogador pode também ter vários estados obtidos através da destruição de \textit{Bosses} ou de ser atingido pelos mesmos. O jogador pode então ter 5 estados: enfortecido, invunerável, lento, rápido, e impedido de disparar. Todos os estados anteriores têm uma imagem diferente que serve de indicador para o utilizador poder distinguir do seu  estado normal. 
 
 \vspace{8pt}
+<<<<<<< HEAD
  O movimento do jogador é bastante simples visto que este apenas pode se movimentar para a direita e para a esquerda. Para tal o jogador utiliza as teclas "A" e "D"  para ir para a esquerda e direita respetivamente, se optar pode também utilizar as setas do teclado.
 
+=======
+
+\tab No estado mais básico, a aplicação apresenta dois estados: menu e jogo. Estes estados estão definidos pela variável \textit{"playing"}. Os métodos de cada de um dos objetos são realizados com base no estado desta variável. Além disto, cada um destes elementos possui também variáveis que definem o estado delas. No caso do menu, o array "\textit{int opt[2]}" define o estado e a seleção atual. Estes diferentes estados podem ser visualizados, com o seu respetivo nome no array  "\textit{string options[27]}".
+
+\vspace{8pt}
+
+Quando as escolhas realizadas pelo utilizador resultam na inicialização de uma experiência de jogo, reiniciam-se as variáveis da instância da classe \textit{Game}, adquirindo os valores fornecidos pela instância da classe \textit{Menu} (sendo estas alteradas com base no \textit{input} do utilizador).
+
+\vspace{8pt}
+
+Quando o jogo acabar, produto da morte ou da finalização do mesmo (o membro variável \textit{victory} da classe \textit{Game} representa este estado), após salvar os dados necessários, este volta ao estado do menu, reiniciando-o.
+
+\vspace{8pt}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.50]{1 - Imagens/MainMenu.png}
+    \caption{Ecrã inicial do \textit{Main Menu}}
+    \label{fig:MainMenu}
+\end{figure}
+
+\subsection{Inicialização do Estado do Jogo}
+
+\vspace{8pt}
+
+Na inicialização do jogo, o menu abre, carregando a informação necessária dos ficheiros de informação \textit{"save.txt", "highscores.txt"} e \textit{"stats.txt"}, para assim desbloquear os diferentes elementos do jogo. Como exemplo, temos o carregamento dos \textit{slots} do jogo no início do menu.
+
+\begin{lstlisting}[language = C++]
+    int i = 0;
+    std::ifstream save_i((".\\save.txt"));
+    if (save_i.is_open())
+    {
+        while (std::getline(save_i, line))
+        {
+            if (line.front() == (char)0){
+                slots[i][0] = (int)line.front() - 48;
+                slots[i][0] = (int)line.back() - 48;
+            }
+        }
+        save_i.close();
+    }
+    \end{lstlisting}
+
+\vspace{8pt}
+
+Com base nas opções escolhidas no menu, o jogo inicia, tomando como referências os dados mencionados anteriormente.
+
+\vspace{8pt}
+
+\subsection{Visualização do Estado do Jogo}
+\tab A parte gráfica deste projeto é bastante única visto que todos as entidades foram desenhados por nós com inspiração nos vários departamentos e cursos de engenharia da Universidade do Minho. Para tal foram utilizadas ferramentas externas. De forma a dar mais mais vida ao jogo utilizamos uma função que funciona como um \textit{Loop} de várias imagens que funciona com um \textit{Timer} diferente do \textit{Timer} principal do jogo.
+
+\subsection{Mudança de estado/movimento do Jogador}
+\tab Inicialmente o jogador começa com 3 vidas, que podem aumentar ,se o jogador atingir uma certa pontuação ou destruir inimigos específicos, ou diminuir caso seja atingido. A nave do jogador pode também ter vários estados que são obtidos através da destruição de \textit{Bosses} ou de ser atingido pelos mesmos. O jogador pode então ter 5 estados: enfortecido,invunerável, lento, rápido, e impedido de disparar. Todos os estados anteriores têm uma imagem diferente que serve de indicador para o utilizador poder distinguir do seu  estado normal.
+
+\vspace{8pt}
+O movimento do jogador é bastante simples visto que este apenas pode se movimentar para a direita e para a esquerda.
+>>>>>>> 9b3b7f107ae5912c806e0c57614ad34f7e139380
 \pagebreak
 
 \subsection{Salvar e Restaurar Jogo}
-\tab Quando um \textit{Slot} é selecionado a partir do submenu \textit{New Game} todos os dados desse espaço irão permanecer no mesmo, com a exceção da dificuldade \textit{Hardcore}. No início de cada nível as estatísticas do utilizador até ao presente momento são guardadas num ficheiro. Quando o jogador morre ou sai do jogo ele pode, através da opção \textit{Load Game}, continuar o modo campanha começando no nível onde deixou. 
+
+\vspace{8pt}
+
+No final de cada experiência de jogo (morte do jogador ou finalização do modo história), os dados (stats, save e highscores, a depender da experiência de jogo atual) são salvos por meio da utilização da biblioteca <iostream>, alterando ou criando documentos .txt., com base nos dados obtidos nessa instância e dos presentes nos documentos mencionados previamente.
+
+
+\vspace{8pt}
+
+Estes dados são carregados cada vez que reinicia o menu, utilizando-os para diferentes fins (carregamento do jogo, troféus, \textit{skins} \dots).
+
+\vspace{8pt}
+
+\tab Quando um \textit{Slot} é selecionado a partir do submenu \textit{New Game} todos os dados desse espaço irão permanecer no mesmo, com a excepção da dificuldade \textit{Hardcore}. No início de cada nível as estatísticas do utilizador até ao presente momento são guardadas num ficheiro. Quando o jogador morre ou sai do jogo ele pode, através da opção \textit{Load Game}, continuar o modo campanha começando no nível onde deixou.
+
 \pagebreak
 
 \subsection{Final da Execução}
@@ -342,7 +420,13 @@ O \textit{File Management} ocorre maioritariamente no menu onde são carregadas 
     \item Número de \textit{Bosses} eliminados;
     \item Se o jogador concluiu com sucesso ou não o modo história, e a dificuldade em que estava;
 \end{itemize}
-É depois atualizado o ficheiro das estatísticas com estes dados. Se o jogo estiver numa dificuldade diferente de \textit{Hardcore} é também gravado o nível onde o \textit{Player} se encontrava antes de morrer podendo este ser carregado mais tarde. 
+É depois atualizado o ficheiro das estatísticas com estes dados. Se o jogo estiver numa dificuldade diferente de \textit{Hardcore} é também gravado o nível onde o \textit{Player} se encontrava antes de morrer podendo este ser carregado mais tarde.
+
+\vspace*{8pt}
+
+Caso seja \textit{Endless} o \textit{Highscore} é guardado bem como se houve ou não a destruição de um
+=======
+É depois atualizado o ficheiro das estatísticas com estes dados. Se o jogo estiver numa dificuldade diferente de \textit{Hardcore} é também gravado o nível onde o \textit{Player} se encontrava antes de morrer podendo este ser carregado mais tarde.
 
 \vspace{8pt}
 
@@ -351,83 +435,21 @@ Estas informações são mais tarde utilizadas para desbloquear os troféus, exi
 
 \pagebreak
 
-\tab Neste subcapítulo serão abordadas figuras, tabelas, equações e listas numeradas/não numeradas.
-
-\subsubsection{Figuras}
-
-\tab A figura \ref{fig:exemplo} é um exemplo da introdução de figuras em \LaTeX:
-
-\begin{figure}[!ht]
-    \centering
-    \caption{Legenda da figura}
-    \label{fig:exemplo}
-\end{figure}
-
-
-\subsubsection{Tabelas}
-
-\tab Na tabela apresenta-se um exemplo de uma tabela em \LaTeX:
-
-\subsubsection{Equações}
-
-\tab Na equação \ref{eq:conservaçãomassaenergia} apresenta-se um exemplo de uma tabela em \LaTeX:
-
-\begin{equation}\label{eq:conservaçãomassaenergia}
-    E = m \cdot c^{2}
-\end{equation}
-
-\subsubsection{Listas}
-
-\tab Apresente-se agora um exemplo de uma lista numerada:
-
-\begin{enumerate}
-    \tabitem
-    \item item 1;
-    \item item 2.
-\end{enumerate}
-
-Relativamente a listas não numeradas:
-
-\begin{itemize}
-    \tabitem
-    \item item 1;
-    \item item 2.
-\end{itemize}
-
-\pagebreak
-
 
 \section{Conclusões e Perspetivas do Trabalho}
 
-\tab Ao longo do trabalho foram-nos surgindo vários desafios e problemas que,com muito empenho e pesquisa, conseguimos resolver. Podémos também ter muita liberdade criativa visto que o tema base não nos restringiu de alguma forma, dando nos assim a liberdade para utilizar outras ferramentas para desenhar os sprites de todas as entidadades do jogo. \tab
-    
-Após a realização deste trabalho, conseguimos concluir que as classes lecionadas ao longo do semestre são realmente importantes na linguagem de C++, pois permitem uma melhor organização do código facilitando o trabalho do programador.\tab 
+\tab Ao longo do trabalho foram-nos surgindo vários desafios e problemas que, com muito empenho e pesquisa, conseguimos resolver. Podemos também ter muita liberdade criativa visto que o tema base não nos restringiu de alguma forma, dando nos assim a liberdade para utilizar outras ferramentas para desenhar os \textit{sprites} de todas as entidades do jogo. \tab
 
-Por fim, em jeito de conclusão, pode dizer-se que este trabalho foi concluído com sucesso, pois conseguimos focar todos os pontos essenciais para a total conclusão do trabalho. Apesar de concluído com sucesso, é importante referir que ao longo de todo o processo de resolução, principalmente na fase de implementação e modulação, surgiram algumas dúvidas, dúvidas essas que felizmente não foram uma barreira que impediu a concretização deste trabalho. Contudo, houve certas funções que gostaríamos de ter implementado que acabaram por não ser concluídas, nomeadamente as technical settings. Esta função não influencia nada na execução do jogo então de forma a não prejudicar a parte mais essencial do projeto, decidimos que esta seria a melhor opção.
+Após a realização deste trabalho, conseguimos concluir que as classes lecionadas ao longo do semestre são realmente importantes na linguagem de C++, pois permitem uma melhor organização do código facilitando o trabalho do programador.\tab
 
-
+Por fim, em jeito de conclusão, pode dizer-se que este trabalho foi concluído com sucesso, pois conseguimos focar todos os pontos essenciais para a total conclusão do trabalho. Apesar de concluído com sucesso, é importante referir que ao longo de todo o processo de resolução, principalmente na fase de implementação e modulação, surgiram algumas dúvidas, dúvidas essas que felizmente não foram uma barreira que impediu a concretização deste trabalho. Contudo, houve certas funções que gostaríamos de ter implementado que acabaram por não ser concluídas, nomeadamente as \textit{technical settings}. Esta função não tem influência na execução do jogo, motivo pelo que decidimos não implementar na sua totalidade.
 
 \pagebreak
-
-
-
-
-
-
-\printbibliography[title={Referências Bibliográficas}]
-
-
-\pagebreak
-
-
-
-
 
 \appendix
 
-\section{Bibliografia}
+\printbibliography[title={Referências Bibliográficas}]
 
-\tab \Blindtext
 
 \pagebreak
 
