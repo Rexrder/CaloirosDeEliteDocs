@@ -101,6 +101,15 @@
 \tab Este trabalho consiste numa explicação extensa da criação do jogo \textbf{"Caloiros de Elite"}, inspirado no jogo \textbf{"Space Invaders"}, desenvolvido pela \textit{Taito Corporation} \cite{spaceInv}.  \par
 
 \vspace{8pt}
+Apesar dos seus controlos simples,
+comparados com os jogos de hoje, este jogo ajudou a expandir a indústria de videojogos para
+uma indústria mundial. Deste modo, vamos descrever como pensamos e implementamos este programa em linguagem C++ tendo por base os conceitos teóricos aprendidos nas aulas da unidade curricular.
+Através das nossas pesquisas conseguimos encontrar várias formas de contornar os problemas que
+foram aparecendo, bem como diversas maneiras para os resolver, no entanto, procuramos sempre
+solucioná-los de uma forma alternativa baseada nos nossos raciocínios. Assim sendo, ao longo
+deste relatório iremos mostrar, na melhor das nossas capacidades, o pensamento crítico que todos os elementos do grupo tiveram ao longo da implementação do projeto. No fim
+deste mesmo relatório também se poderá encontrar o código implementado, dividido pelas partes
+essências ao mesmo.
 
 Apesar dos seus controlos simples,
 comparados com os jogos de hoje, este jogo ajudou a expandir a indústria de videojogos para
@@ -125,9 +134,6 @@ Através das nossas pesquisas conseguimos encontrar várias formas de contornar 
 
 \vspace{40pt}
 \listoffigures
-
-\vspace{40pt}
-\listoftables
 
 \pagebreak
 
@@ -313,7 +319,6 @@ Além de um ficheiro extra para funções úteis ao longo do programa. A seguir,
 #include "Objects.h"
 #ifndef FUNCS
 #define FUNCS
-
 bool verifyCollision(int*, int*); //allows to verify collisions
 bool animation(int start, int end, int&, int&, bool ping_pong);
 bool compareHighs(const HighscrStat& first, const HighscrStat& second);
@@ -373,6 +378,8 @@ Na inicialização do jogo, o menu abre, carregando a informação necessária d
 
 Com base nas opções escolhidas no menu, o jogo inicia, tomando como referências os dados mencionados anteriormente.
 
+\vspace{8pt}
+
 \subsection{Visualização do Estado do Jogo}
 \tab A parte gráfica deste projeto é bastante única visto que todos as entidades foram desenhados por nós com inspiração nos vários departamentos e cursos de engenharia da Universidade do Minho. Para tal foram utilizadas ferramentas externas. De forma a dar mais mais vida ao jogo utilizamos uma função que funciona como um \textit{Loop} de várias imagens que funciona com um \textit{Timer} diferente do \textit{Timer} principal do jogo.
 
@@ -389,10 +396,12 @@ O movimento do jogador é bastante simples visto que este apenas pode se movimen
 
 No final de cada experiência de jogo (morte do jogador ou finalização do modo história), os dados (stats, save e highscores, a depender da experiência de jogo atual) são salvos por meio da utilização da biblioteca <iostream>, alterando ou criando documentos .txt., com base nos dados obtidos nessa instância e dos presentes nos documentos mencionados previamente.
 
+
 \vspace{8pt}
 
 Estes dados são carregados cada vez que reinicia o menu, utilizando-os para diferentes fins (carregamento do jogo, troféus, \textit{skins} \dots).
 
+\vspace{8pt}
 
 \tab Quando um \textit{Slot} é selecionado a partir do submenu \textit{New Game} todos os dados desse espaço irão permanecer no mesmo, com a excepção da dificuldade \textit{Hardcore}. No início de cada nível as estatísticas do utilizador até ao presente momento são guardadas num ficheiro. Quando o jogador morre ou sai do jogo ele pode, através da opção \textit{Load Game}, continuar o modo campanha começando no nível onde deixou.
 
