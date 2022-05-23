@@ -98,22 +98,13 @@
 \section{Resumo}
 % \markboth{Resumo}{Resumo}
 
-\tab Este trabalho consiste numa explicação extensa da criação do jogo \textbf{"Caloiros de Elite"}, inspirado no jogo \textbf{"Space Invaders"}, desenvolvido pela \textit{Taito Corporation} \cite{spaceInv}.  \par
+\tab Este trabalho consiste numa explicação extensa da criação do jogo \textbf{"Caloiros de Elite"}, inspirado no jogo \textbf{"Space Invaders"}, desenvolvido pela \textit{Taito Corporation} \cite{spaceInv}.
 
 \vspace{8pt}
-Apesar dos seus controlos simples,
-comparados com os jogos de hoje, este jogo ajudou a expandir a indústria de videojogos para
-uma indústria mundial. Deste modo, vamos descrever como pensamos e implementamos este programa em linguagem C++ tendo por base os conceitos teóricos aprendidos nas aulas da unidade curricular.
-Através das nossas pesquisas conseguimos encontrar várias formas de contornar os problemas que
-foram aparecendo, bem como diversas maneiras para os resolver, no entanto, procuramos sempre
-solucioná-los de uma forma alternativa baseada nos nossos raciocínios. Assim sendo, ao longo
-deste relatório iremos mostrar, na melhor das nossas capacidades, o pensamento crítico que todos os elementos do grupo tiveram ao longo da implementação do projeto. No fim
-deste mesmo relatório também se poderá encontrar o código implementado, dividido pelas partes
-essências ao mesmo.
 
 Apesar dos seus controlos simples,
 comparados com os jogos de hoje, este jogo ajudou a expandir a indústria de videojogos para
-uma indústria mundial. Deste modo, vamos descrever como pensamos e implementamos este programa em linguagem C++ tendo por base os conceitos teóricos aprendidos nas aulas da unidade curricular.
+uma indústria mundial. Deste modo, vamos descrever como pensamos e implementamos este programa em linguagem C++ \cite{c++} e a biblioteca ALLEGRO5 \cite{allegro}, tendo por base os conceitos teóricos aprendidos nas aulas da unidade curricular.
 
 \vspace{8pt}
 
@@ -345,13 +336,6 @@ Quando o jogo acabar, produto da morte ou da finalização do mesmo (o membro va
 
 \vspace{8pt}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale = 0.50]{1 - Imagens/MainMenu.png}
-    \caption{Ecrã inicial do \textit{Main Menu}}
-    \label{fig:MainMenu}
-\end{figure}
-
 \subsection{Inicialização do Estado do Jogo}
 
 \vspace{8pt}
@@ -380,22 +364,83 @@ Com base nas opções escolhidas no menu, o jogo inicia, tomando como referênci
 
 \vspace{8pt}
 
-\subsection{Visualização do Estado do Jogo}
-\tab A parte gráfica deste projeto é bastante única visto que todos as entidades foram desenhados por nós com inspiração nos vários departamentos e cursos de engenharia da Universidade do Minho. Para tal foram utilizadas ferramentas externas. De forma a dar mais mais vida ao jogo utilizamos uma função que funciona como um \textit{Loop} de várias imagens que funciona com um \textit{Timer} diferente do \textit{Timer} principal do jogo.
-
-\subsection{Mudança de estado/movimento do Jogador}
-\tab Inicialmente o jogador começa com 3 vidas, que podem aumentar ,se o jogador atingir uma certa pontuação ou destruir inimigos específicos, ou diminuir caso seja atingido. A nave do jogador pode também ter vários estados que são obtidos através da destruição de \textit{Bosses} ou de ser atingido pelos mesmos. O jogador pode então ter 5 estados: enfortecido,invunerável, lento, rápido, e impedido de disparar. Todos os estados anteriores têm uma imagem diferente que serve de indicador para o utilizador poder distinguir do seu  estado normal.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.50]{1 - Imagens/MainMenu.png}
+    \caption{Ecrã inicial do \textit{Main Menu}}
+    \label{fig:MainMenu}
+\end{figure}
 
 \vspace{8pt}
-O movimento do jogador é bastante simples visto que este apenas pode se movimentar para a direita e para a esquerda.
-\pagebreak
+
+\subsection{Visualização do Estado do Jogo}
+\tab A parte gráfica deste projeto é bastante única visto que todas as entidades foram desenhadas por nós com inspiração nos vários departamentos e cursos de engenharia da Universidade do Minho. Para tal foram utilizadas ferramentas externas. Para dar mais vida ao jogo, além de desenhar as entidades, estas são animadas, recorrendo à utilização de um segundo \textit{Timer}, diferente ao responsável pela maioria das interações e alterações de estado no jogo. Este é responsável por alterar as imagens apresentadas, dando a ideia de que os elementos estão se a mexer.
+
+\vspace{8pt}
+
+No caso do jogador e dos inimigos, criamos um \textit{sprite} (Figura \ref{fig:Skins}) que contem a visualização os diferentes estados que estes podem possuir, com a sua respetiva animação.
+
+\vspace{8pt}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.30]{1 - Imagens/skins.png}
+    \caption{\textit{Skins} do jogador/inimigos}
+    \label{fig:Skins}
+\end{figure}
+
+\vspace{8pt}
+
+Recorrendo às funções do ALLEGRO 5, criamos métodos "\textit{.draw}" nas diferentes classes do jogo. Desta forma, aninhando as funções, podemos simplificar o código, mantendo limpo o código da nossa \textit{main}: \textit{"program.cpp"}. Uma interface típica numa experiência de jogo (Figura \ref{fig:GameExperience}) contém as vidas do jogador, barra de vida do \textit{Megaboss}, se houver, e \textit{score}, no caso de estar a jogar na modalidade \textit{Endless}.
+\vspace{8pt}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.60]{1 - Imagens/GameExperience.png}
+    \caption{Experiência de jogo}
+    \label{fig:GameExperience}
+\end{figure}
+
+\vspace{8pt}
+
+\subsection{Mudança de estado/movimento do Jogador}
+\tab O jogador começa com um número de vidas correspondentes à modalidade utilizada (depende de se este for \textit{Hardcore} ou não), que podem aumentar ou diminuir conforme aconteçam certos eventos (atingir uma certa pontuação, destruir \textit{bosses} ou diminuir caso seja atingido). A nave do jogador pode também ter vários estados, obtidos através da destruição de \textit{Bosses} ou de ser atingido pelos mesmos. Existem 6 estados:
+
+\vspace{8pt}
+
+\begin{itemize}
+    \item  Enfortecido: O dano realizado por cada disparo individual equivale a cinco disparos durante uma quantidade de tempo. Obtém-se acabando com o \textit{boss UM}.
+    \item  Protegido: Durante uma quantidade limitada de tempo, qualquer dano recebido não é considerado, retirando esta proteção adicional. Obtém-se quando se ganha uma vida adicional enquanto se está no máximo de vidas possíveis.
+    \item Invulnerável: Parecido a protegido. Não é retirada se o jogador colidir com uma bala. Obtém-se se o jogador receber dano (durante uma quantidade pequena de tempo) ou se se acaba com o \textit{boss Ciências}.
+    \item Lento: O jogador mexe-se a um meio da velocidade normal durante uma quantidade de tempo. Produto de receber o \textit{laser} do \textit{boss Medicina}.
+    \item Rápido: O jogador mexe-se ao dobro da velocidade normal durante uma quantidade de tempo. Obtém-se acabando com o \textit{boss UM}.
+    \item Impedido de Disparar: O jogador não pode disparar durante uma quantidade de tempo. Produto de receber o \textit{laser} do \textit{boss UM}.
+\end{itemize}
+
+\vspace{8pt}
+
+Todos os estados anteriores têm uma imagem diferente que serve de indicador para o utilizador poder distinguir do seu  estado normal.
+
+\vspace{8pt}
+
+O movimento do jogador é bastante simples visto que este apenas pode se movimentar para a esquerda e para a direita, a depender dos eventos do teclado (teclas A/Esquerda e D/Direita, nomeadamente).
+
+\vspace{8pt}
 
 \subsection{Salvar e Restaurar Jogo}
 
 \vspace{8pt}
 
-No final de cada experiência de jogo (morte do jogador ou finalização do modo história), os dados (stats, save e highscores, a depender da experiência de jogo atual) são salvos por meio da utilização da biblioteca <iostream>, alterando ou criando documentos .txt., com base nos dados obtidos nessa instância e dos presentes nos documentos mencionados previamente.
+No final de cada experiência de jogo (morte do jogador ou finalização do modo história), os dados (stats, save e highscores, a depender da experiência de jogo atual) são salvos por meio da utilização da biblioteca "<iostream>", alterando ou criando documentos ".txt"., com base nos dados obtidos nessa instância e dos presentes nos documentos mencionados previamente. Temos como exemplo, um típico documento de \textit{highscores}.
 
+\vspace{8pt}
+
+\begin{lstlisting}
+flu 29139
+black 21684
+homeru 19001
+homers 10811
+    \end{lstlisting}
 
 \vspace{8pt}
 
@@ -405,12 +450,20 @@ Estes dados são carregados cada vez que reinicia o menu, utilizando-os para dif
 
 \tab Quando um \textit{Slot} é selecionado a partir do submenu \textit{New Game} todos os dados desse espaço irão permanecer no mesmo, com a excepção da dificuldade \textit{Hardcore}. No início de cada nível as estatísticas do utilizador até ao presente momento são guardadas num ficheiro. Quando o jogador morre ou sai do jogo ele pode, através da opção \textit{Load Game}, continuar o modo campanha começando no nível onde deixou.
 
-\pagebreak
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.50]{1 - Imagens/SelectionScreen.png}
+    \caption{Seleção de dificuldade antes do inicio de um \textit{New Game}}
+    \label{fig:NewGame}
+\end{figure}
+
+
+
+\vspace{8pt}
 
 \subsection{Final da Execução}
 \tab Este projeto não tem um fim definido, apenas acaba quando o utilizador fecha a janela do jogo. Sendo assim focar-nos-emos no fim da sessão, ou seja, quando o jogador morre ou conclui o modo história. Quando o utilizador morre no modo história em qualquer dificuldade, o jogo tem em conta vários critérios:
 \begin{itemize}
-    \tabitem
     \item Número de inimigos mortos;
     \item Número de \textit{Bosses} eliminados;
     \item Se o jogador concluiu com sucesso ou não o modo história, e a dificuldade em que estava;
@@ -419,23 +472,44 @@ Estes dados são carregados cada vez que reinicia o menu, utilizando-os para dif
 
 \vspace*{8pt}
 
-Caso seja \textit{Endless} o \textit{Highscore} é guardado bem como se houve ou não a destruição de um
-=======
-É depois atualizado o ficheiro das estatísticas com estes dados. Se o jogo estiver numa dificuldade diferente de \textit{Hardcore} é também gravado o nível onde o \textit{Player} se encontrava antes de morrer podendo este ser carregado mais tarde.
-
-\vspace{8pt}
-
 Caso tenha sido selecionado o modo \textit{Endless} o \textit{Highscore} é guardado os pontos obtidos bem como o nome associado a tal pontuação. É também guardado se houve ou não a destruição de uma nave especial que aparece com uma chance aleatória. Os \textit{Highscores} são automáticamente organizados de forma a apenas aparecerem as 8 melhores pontuações.
+
+\vspace*{8pt}
+
 Estas informações são mais tarde utilizadas para desbloquear os troféus, exibir os \textit{Highscores} e atualizar as estatísticas	do utilizador.
+
+\vspace*{8pt}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.3]{1 - Imagens/trophies.png}
+    \caption{Troféus}
+    \label{fig:Trophies}
+\end{figure}
+
+\vspace*{8pt}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.3]{1 - Imagens/highscore.png}
+    \caption{\textit{Highscores}}
+    \label{fig:Highscores}
+\end{figure}
+
+
 
 \pagebreak
 
 
 \section{Conclusões e Perspetivas do Trabalho}
 
-\tab Ao longo do trabalho foram-nos surgindo vários desafios e problemas que, com muito empenho e pesquisa, conseguimos resolver. Podemos também ter muita liberdade criativa visto que o tema base não nos restringiu de alguma forma, dando nos assim a liberdade para utilizar outras ferramentas para desenhar os \textit{sprites} de todas as entidades do jogo. \tab
+\tab Ao longo do trabalho foram-nos surgindo vários desafios e problemas que, com muito empenho e pesquisa, conseguimos resolver. Podemos também ter muita liberdade criativa visto que o tema base não nos restringiu de alguma forma, dando nos assim a liberdade para utilizar outras ferramentas para desenhar os \textit{sprites} de todas as entidades do jogo.
 
-Após a realização deste trabalho, conseguimos concluir que as classes lecionadas ao longo do semestre são realmente importantes na linguagem de C++, pois permitem uma melhor organização do código facilitando o trabalho do programador.\tab
+\vspace{8pt}
+
+Após a realização deste trabalho, conseguimos concluir que as classes lecionadas ao longo do semestre são realmente importantes na linguagem de C++, pois permitem uma melhor organização do código facilitando o trabalho do programador. Além disto, também foi possível apreciar as vantagens da utilização de programação orientada a objetos. Sem menor importância, também mencionamos os benefícios da utilização de controlo de versões, nomeadamente o Git, sendo que conseguimos trabalhar em conjunto com maior facilidade porque os nossos ficheiros, tanto código \cite{code} como o nosso relatório \cite{docs} foram realizados com esta ferramenta.
+
+\vspace{8pt}
 
 Por fim, em jeito de conclusão, pode dizer-se que este trabalho foi concluído com sucesso, pois conseguimos focar todos os pontos essenciais para a total conclusão do trabalho. Apesar de concluído com sucesso, é importante referir que ao longo de todo o processo de resolução, principalmente na fase de implementação e modulação, surgiram algumas dúvidas, dúvidas essas que felizmente não foram uma barreira que impediu a concretização deste trabalho. Contudo, houve certas funções que gostaríamos de ter implementado que acabaram por não ser concluídas, nomeadamente as \textit{technical settings}. Esta função não tem influência na execução do jogo, motivo pelo que decidimos não implementar na sua totalidade.
 
